@@ -11,10 +11,8 @@ public class Article {
     private LocalDateTime create_date;
     private LocalDateTime update_date;
 
-    public Article(Long id, Long user_id, Long board_id, String title, String content) {
+    public Article(Long id, String title, String content) {
         this.id = id;
-        this.user_id=user_id;
-        this.board_id=board_id;
         this.title = title;
         this.content = content;
         this.create_date=LocalDateTime.now();

@@ -48,11 +48,6 @@ public class ArticleService {
         articleRepository.deleteArticle(id);
     }
 
-    public String getMemberName(Long id){
-        Optional<Member> member=memberRepository.getmemberByid(id);
-        return member.map(Member::getName).orElse(null);
-    }
-
     public String getBoardName(Long id){
         Optional<Board> board=boardRepository.getBoardByid(id);
         return board.map(Board::getName).orElse(null);

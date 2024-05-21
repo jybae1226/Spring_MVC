@@ -4,6 +4,7 @@ import com.example.demo.Model.Article;
 import com.example.demo.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -12,19 +13,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class ArticleController {
     private final Map<Long, Article> articles = new HashMap<>();
+
     @Autowired
     private ArticleService articleService;
 
     @GetMapping("/posts")
     public String post(Model model){
         List<Article> articles=articleService.getallArticle();
-        String Board_name=articleService.getBoardName(articles.get(0).getBoard_id());
-        String User_name=articleService.getMemberName(articles.get(0).getUser_id());
-        model.addAttribute("Board_name",Board_name);
-        model.addAttribute("User_name",User_name);
+        String Board_name= articleService.getBoardName(articles.get(0).getBoard_id());
         model.addAttribute("articles",articles);
         return "article";
     }

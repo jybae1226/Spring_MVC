@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Model.Article;
 import com.example.demo.Model.Member;
 import com.example.demo.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -20,10 +22,15 @@ public class MemberController {
 
     @GetMapping
     public ResponseEntity<Map<Long,Member>> getAllMembers() {
+        List<Member> members=memberService.getallMember();
         if (members.isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(members);
+            Map<Long, Member> map = new HashMap<>();
+            for (Member member : members) {
+                map.put(member.getId(), member);
+            }
+            return ResponseEntity.ok().body(map);
         }
     }
 
