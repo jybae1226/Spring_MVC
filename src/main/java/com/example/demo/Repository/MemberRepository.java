@@ -7,7 +7,7 @@ import java.util.*;
 @Repository
 public class MemberRepository {
     private Map<Long, Member> members;
-    private long current_id;
+    private long current_id=1;
 
     public MemberRepository() {
         this.members = new HashMap<Long, Member>();
@@ -22,13 +22,13 @@ public class MemberRepository {
     }
 
     public Member addmember(Member member) {
-        member.setId(++current_id);
+        member.setId(current_id++);
         return members.put(member.getId(), member);
     }
 
-    public Member updatemember(Member member) {
-        if (members.containsKey(member.getId())) {
-            return members.put(member.getId(), member);
+    public Member updatemember(Long id, Member member) {
+        if (members.containsKey(id)) {
+            return members.put(id, member);
         }
         return null;
     }

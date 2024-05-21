@@ -47,7 +47,7 @@ public class MemberController {
     public ResponseEntity<Member> updateMember(@PathVariable Long id, @RequestBody Member member) {
         if(!members.containsKey(id)) {
             member.setId(id);
-            Member updated = memberService.updateMember(member);
+            Member updated = memberService.updateMember(id, member);
             return ResponseEntity.ok(updated);
         } else {
             return ResponseEntity.notFound().build();

@@ -10,11 +10,11 @@ import org.springframework.http.ResponseEntity;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 public class ArticleController {
     private final Map<Long, Article> articles = new HashMap<>();
-    private long nextId = 1;
     @Autowired
     private ArticleService articleService;
 
@@ -31,17 +31,22 @@ public class ArticleController {
 
     @GetMapping("/articles")
     public ResponseEntity<Map<Long, Article>> getArticles() {
+        List<Article> articles=articleService.getallArticle();
         if (articles.isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(articles);
+            Map<Long, Article> map = new HashMap<>();
+            for (Article article : articles) {
+                map.put(article.getId(), article);
+            }
+            return ResponseEntity.ok().body(map);
         }
     }
 
     @GetMapping("/articles/{id}")
-    public ResponseEntity<Article> getArticle(@PathVariable Long id) {
-        Article article = articles.get(id);
-        if (article != null) {
+    public ResponseEntity<Optional<Article>> getArticle(@PathVariable Long id) {
+        Optional<Article> article = articleService.getArticleById(id);
+        if (article.isPresent()) {
             return ResponseEntity.ok().body(article);
         } else {
             return ResponseEntity.notFound().build();
@@ -57,22 +62,13 @@ public class ArticleController {
 
     @PutMapping("/articles/{id}")
     public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody Article article) {
-        if (articles.containsKey(id)) {
-            article.setId(id);
-            Article updated=articleService.updateArticle(article);
+            Article updated=articleService.updateArticle(id, article);
             return ResponseEntity.ok().body(updated);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
     }
 
     @DeleteMapping("/articles/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable Long id) {
-        if (articles.containsKey(id)) {
             articleService.deleteArticle(id);
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
     }
 }

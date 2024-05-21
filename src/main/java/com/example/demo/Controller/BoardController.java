@@ -47,7 +47,7 @@ public class BoardController {
     public ResponseEntity<Board> updateBoard(@PathVariable Long id, @RequestBody Board board) {
         if(!boards.containsKey(id)) {
             board.setId(id);
-            Board updated = boardService.updateBoard(board);
+            Board updated = boardService.updateBoard(id, board);
             return ResponseEntity.ok(updated);
         } else {
             return ResponseEntity.notFound().build();

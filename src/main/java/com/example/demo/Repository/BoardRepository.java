@@ -7,7 +7,7 @@ import java.util.*;
 @Repository
 public class BoardRepository {
     private Map<Long, Board> boards;
-    private long current_id=0;
+    private long current_id=1;
 
     public BoardRepository() {
         this.boards = new HashMap<Long, Board>();
@@ -22,13 +22,13 @@ public class BoardRepository {
     }
 
     public Board addBoard(Board board) {
-        board.setId(++current_id);
+        board.setId(current_id++);
         return boards.put(board.getId(), board);
     }
 
-    public Board updateBoard(Board board) {
-        if (boards.containsKey(board.getId())) {
-            return boards.put(board.getId(), board);
+    public Board updateBoard(Long id,Board board) {
+        if (boards.containsKey(id)) {
+            return boards.put(id, board);
         }
         return null;
     }

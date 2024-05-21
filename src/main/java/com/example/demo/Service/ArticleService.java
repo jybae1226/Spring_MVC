@@ -4,6 +4,7 @@ import com.example.demo.Model.*;
 import com.example.demo.Repository.*;
 import java.util.*;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 
 @Service
@@ -33,15 +34,17 @@ public class ArticleService {
         return articleRepository.addArticle(article);
     }
 
-    public Article updateArticle(Article article){
-        if(article.getId()==null) {
+    public Article updateArticle(Long id, Article article){
+        Optional<Article> updated = articleRepository.getArticleByid(id);
+        if(updated.isPresent()){
+            article.setUpdate_date(LocalDateTime.now());
+            return articleRepository.updateArticle(id, article);
+        } else {
             return null;
         }
-        article.setUpdate_date(LocalDateTime.now());
-        return articleRepository.updateArticle(article);
     }
 
-    public void deleteArticle(Long id){
+    public void deleteArticle(Long id) {
         articleRepository.deleteArticle(id);
     }
 

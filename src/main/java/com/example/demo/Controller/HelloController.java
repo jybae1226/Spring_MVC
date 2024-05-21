@@ -23,7 +23,7 @@ public class HelloController {
     @GetMapping("/introduce")
     public String introduce(@RequestParam(name = "name", required = false, defaultValue = "배종연") String name, Model model) {
         model.addAttribute("name", name);
-        return "article";
+        return "introduce";
     }
 
     @GetMapping("/json")

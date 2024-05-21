@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.Model.Board;
 import com.example.demo.Model.Member;
 import com.example.demo.Repository.MemberRepository;
 import org.springframework.stereotype.Service;
@@ -21,11 +22,13 @@ public class MemberService {
         return memberRepository.addmember(member);
     }
 
-    public Member updateMember(Member member) {
-        if (member.getId() == null) {
+    public Member updateMember(Long id, Member member) {
+        Optional<Member> updated = memberRepository.getmemberByid(id);
+        if(updated.isPresent()){
+            return memberRepository.updatemember(id, member);
+        } else {
             return null;
         }
-        return memberRepository.updatemember(member);
     }
 
     public void deleteMember(Long id) {

@@ -1,8 +1,11 @@
 package com.example.demo.Service;
 
+import com.example.demo.Model.Article;
 import com.example.demo.Repository.BoardRepository;
 import com.example.demo.Model.Board;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -25,11 +28,13 @@ public class BoardService {
         return boardRepository.addBoard(board);
     }
 
-    public Board updateBoard(Board board) {
-        if (board.getId()==null) {
+    public Board updateBoard(Long id,Board board) {
+        Optional<Board> updated = boardRepository.getBoardByid(id);
+        if(updated.isPresent()){
+            return boardRepository.updateBoard(id, board);
+        } else {
             return null;
         }
-        return boardRepository.updateBoard(board);
     }
 
     public void deleteBoard(Long id) {

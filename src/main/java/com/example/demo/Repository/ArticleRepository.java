@@ -7,7 +7,7 @@ import java.util.*;
 @Repository
 public class ArticleRepository {
     private Map<Long, Article> articles;
-    private long currentId=0;
+    private long currentId=1;
 
     public ArticleRepository() {
         this.articles = new HashMap<Long, Article>();
@@ -22,13 +22,16 @@ public class ArticleRepository {
     }
 
     public Article addArticle(Article article) {
-        article.setId(++currentId);
-        return articles.put(currentId, article);
+        article.setId(currentId++);
+        articles.put(article.getId(), article);
+        return article;
     }
 
-    public Article updateArticle(Article article) {
-        if (articles.containsKey(article.getId())) {
-            return articles.put(article.getId(), article);
+    public Article updateArticle(Long id, Article article) {
+        if (articles.containsKey(id)) {
+            article.setId(id);
+            articles.put(id, article);
+            return article;
         }
         return null;
     }
