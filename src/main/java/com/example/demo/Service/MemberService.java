@@ -1,6 +1,5 @@
 package com.example.demo.Service;
 
-import com.example.demo.Model.Board;
 import com.example.demo.Model.Member;
 import com.example.demo.Repository.MemberRepository;
 import org.springframework.stereotype.Service;

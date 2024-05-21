@@ -6,7 +6,7 @@ import java.util.*;
 
 @Repository
 public class MemberRepository {
-    private Map<Long, Member> members;
+    private final Map<Long, Member> members;
     private long current_id=1;
 
     public MemberRepository() {

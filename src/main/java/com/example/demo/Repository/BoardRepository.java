@@ -6,7 +6,7 @@ import java.util.*;
 
 @Repository
 public class BoardRepository {
-    private Map<Long, Board> boards;
+    private final Map<Long, Board> boards;
     private long current_id=1;
 
     public BoardRepository() {

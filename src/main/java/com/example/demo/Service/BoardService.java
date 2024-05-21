@@ -1,11 +1,8 @@
 package com.example.demo.Service;
 
-import com.example.demo.Model.Article;
 import com.example.demo.Repository.BoardRepository;
 import com.example.demo.Model.Board;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Service

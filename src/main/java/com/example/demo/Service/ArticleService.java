@@ -4,7 +4,6 @@ import com.example.demo.Model.*;
 import com.example.demo.Repository.*;
 import java.util.*;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 
 @Service
@@ -46,10 +45,5 @@ public class ArticleService {
 
     public void deleteArticle(Long id) {
         articleRepository.deleteArticle(id);
-    }
-
-    public String getBoardName(Long id){
-        Optional<Board> board=boardRepository.getBoardByid(id);
-        return board.map(Board::getName).orElse(null);
     }
 }

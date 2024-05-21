@@ -15,15 +15,12 @@ import java.util.Optional;
 
 @Controller
 public class ArticleController {
-    private final Map<Long, Article> articles = new HashMap<>();
-
     @Autowired
     private ArticleService articleService;
 
     @GetMapping("/posts")
     public String post(Model model){
         List<Article> articles=articleService.getallArticle();
-        String Board_name= articleService.getBoardName(articles.get(0).getBoard_id());
         model.addAttribute("articles",articles);
         return "article";
     }

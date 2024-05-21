@@ -6,7 +6,7 @@ import java.util.*;
 
 @Repository
 public class ArticleRepository {
-    private Map<Long, Article> articles;
+    private final Map<Long, Article> articles;
     private long currentId=1;
 
     public ArticleRepository() {
