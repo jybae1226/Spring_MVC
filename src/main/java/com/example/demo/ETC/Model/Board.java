@@ -1,10 +1,10 @@
-package com.example.demo.Model;
+package com.example.demo.ETC.Model;
 
 public class Board {
     private Long id;
     private String name;
 
-    public Board(Long id, String name) {
+    public Board(long id, String name) {
         this.id=id;
         this.name=name;
     }

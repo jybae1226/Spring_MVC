@@ -1,8 +1,7 @@
-package com.example.demo.Service;
+package com.example.demo.ETC.Service;
 
-import com.example.demo.Model.Board;
-import com.example.demo.Model.Member;
-import com.example.demo.Repository.MemberRepository;
+import com.example.demo.ETC.Model.Member;
+import com.example.demo.ETC.Repository.MemberRepository;
 import org.springframework.stereotype.Service;
 import java.util.*;
 

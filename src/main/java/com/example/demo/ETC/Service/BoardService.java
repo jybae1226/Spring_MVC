@@ -1,11 +1,9 @@
-package com.example.demo.Service;
+package com.example.demo.ETC.Service;
 
-import com.example.demo.Model.Article;
-import com.example.demo.Repository.BoardRepository;
-import com.example.demo.Model.Board;
+import com.example.demo.ETC.Model.Board;
+import com.example.demo.ETC.Repository.BoardRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Service

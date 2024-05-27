@@ -1,7 +1,7 @@
-package com.example.demo.Controller;
+package com.example.demo.ETC.Controller;
 
-import com.example.demo.Model.Board;
-import com.example.demo.Service.BoardService;
+import com.example.demo.ETC.Model.Board;
+import com.example.demo.ETC.Service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

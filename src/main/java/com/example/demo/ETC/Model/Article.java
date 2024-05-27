@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.ETC.Model;
 
 import java.time.LocalDateTime;
 
@@ -11,12 +11,24 @@ public class Article {
     private LocalDateTime create_date;
     private LocalDateTime update_date;
 
-    public Article(Long id, String title, String content) {
+    public Article(Long id, String title) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.create_date=LocalDateTime.now();
         this.update_date=LocalDateTime.now();
+    }
+
+    public Article(Long id, Long user_Id, Long board_Id, String title, String content, LocalDateTime createTime) {
+        this.id = id;
+        this.user_id = user_Id;
+        this.board_id = board_Id;
+        this.title = title;
+        this.content = content;
+        this.create_date=LocalDateTime.now();
+    }
+
+    public Article(Long board_id, Long user_id, String title, String content) {
     }
 
     public Long getId() {
@@ -27,7 +39,7 @@ public class Article {
         this.id = id;
     }
 
-    public Long getUser_id() {
+    public long getUser_id() {
         return user_id;
     }
 
@@ -35,7 +47,7 @@ public class Article {
         this.user_id=user_id;
     }
 
-    public Long getBoard_id() {
+    public long getBoard_id() {
         return board_id;
     }
 

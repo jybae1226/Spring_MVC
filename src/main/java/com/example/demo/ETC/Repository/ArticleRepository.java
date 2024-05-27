@@ -1,6 +1,6 @@
-package com.example.demo.Repository;
+package com.example.demo.ETC.Repository;
 
-import com.example.demo.Model.Article;
+import com.example.demo.ETC.Model.Article;
 import org.springframework.stereotype.Repository;
 import java.util.*;
 

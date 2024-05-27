@@ -4,10 +4,10 @@
     <title>자유게시판</title>
 </head>
 <body>
-    <h1>자유게시판</h1>
+    <h1 th:text="${board_name}"></h1>
     <div th:each="article:${articles}">
         <div>
-            <h3 th:text="${Board_name}"></h3>
+            <hr style="border: solid 2px;width:50%;margin-left:0;">
             <p>회원ID: <span th:text="${article.user_id}"></span></p>
             <p>글 제목:<span th:text="${article.title}"></span></p>
             <p>등록날짜:<span th:text="${article.create_date}"></span></p>
