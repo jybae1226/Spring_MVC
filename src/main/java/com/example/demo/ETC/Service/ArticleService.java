@@ -63,7 +63,7 @@ public class ArticleService {
             }
             Board board = boardDAO.getById(article.getBoard_id());
             if (board == null) {
-                throw new IllegalArgumentException("Board with ID "+boardId+" 2 not found");
+                throw new IllegalArgumentException("Board with ID "+boardId+" not found");
             }
             return ArticleResponse.of(article, board, member);
         }).toList();
