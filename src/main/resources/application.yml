@@ -1,13 +1,6 @@
 spring:
-  application:
-    name: demo
-  jpa:
-    database: mysql
-    hibernate:
-      ddl-auto: update
-    show-sql: true
   datasource:
     username: root
-    url: jdbc:mysql://localhost:3306/bcsd
-    password: '1q2w3e4r!'
+    url: jdbc:mysql://localhost:3306/bcsd?serverTimezone=Asia/Seoul
+    password: 1q2w3e4r!
     driver-class-name: com.mysql.cj.jdbc.Driver

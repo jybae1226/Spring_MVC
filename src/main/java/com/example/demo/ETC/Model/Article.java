@@ -5,27 +5,27 @@ import java.time.LocalDateTime;
 public class Article {
     private Long id;
     private Long board_id;
-    private Long user_id;
+    private Long author_id;
     private String title;
     private String content;
-    private LocalDateTime create_date;
-    private LocalDateTime update_date;
+    private LocalDateTime created_date;
+    private LocalDateTime modified_date;
 
     public Article(Long id, String title) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.create_date=LocalDateTime.now();
-        this.update_date=LocalDateTime.now();
+        this.created_date=LocalDateTime.now();
+        this.modified_date=LocalDateTime.now();
     }
 
     public Article(Long id, Long user_Id, Long board_Id, String title, String content, LocalDateTime createTime) {
         this.id = id;
-        this.user_id = user_Id;
+        this.author_id = user_Id;
         this.board_id = board_Id;
         this.title = title;
         this.content = content;
-        this.create_date=LocalDateTime.now();
+        this.created_date=LocalDateTime.now();
     }
 
     public Article(Long board_id, Long user_id, String title, String content) {
@@ -40,11 +40,11 @@ public class Article {
     }
 
     public long getUser_id() {
-        return user_id;
+        return author_id;
     }
 
     public void setUser_id(Long user_id) {
-        this.user_id=user_id;
+        this.author_id=user_id;
     }
 
     public long getBoard_id() {
@@ -72,18 +72,18 @@ public class Article {
     }
 
     public LocalDateTime getCreate_date() {
-        return create_date;
+        return created_date;
     }
 
     public void setCreate_date(LocalDateTime create_date) {
-        this.create_date = create_date;
+        this.created_date = create_date;
     }
 
     public LocalDateTime getUpdate_date() {
-        return update_date;
+        return modified_date;
     }
 
     public void setUpdate_date(LocalDateTime update_date) {
-        this.update_date = update_date;
+        this.modified_date = update_date;
     }
 }
