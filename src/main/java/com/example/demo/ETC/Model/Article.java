@@ -11,7 +11,7 @@ public class Article {
     private LocalDateTime created_date;
     private LocalDateTime modified_date;
 
-    public Article(Long id, String title) {
+    public Article(Long id, String title, String content) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -19,16 +19,20 @@ public class Article {
         this.modified_date=LocalDateTime.now();
     }
 
-    public Article(Long id, Long user_Id, Long board_Id, String title, String content, LocalDateTime createTime) {
+    public Article(Long id, Long board_id, Long author_id, String title, String content, Object createTime) {
         this.id = id;
-        this.author_id = user_Id;
-        this.board_id = board_Id;
+        this.board_id = board_id;
+        this.author_id = author_id;
         this.title = title;
         this.content = content;
         this.created_date=LocalDateTime.now();
     }
 
-    public Article(Long board_id, Long user_id, String title, String content) {
+    public Article(Long board_id, Long author_id, String title, String content) {
+        this.board_id = board_id;
+        this.author_id = author_id;
+        this.title = title;
+        this.content = content;
     }
 
     public Long getId() {
@@ -39,12 +43,12 @@ public class Article {
         this.id = id;
     }
 
-    public long getUser_id() {
+    public long getauthor_id() {
         return author_id;
     }
 
-    public void setUser_id(Long user_id) {
-        this.author_id=user_id;
+    public void setAuthor_id(Long author_id) {
+        this.author_id=author_id;
     }
 
     public long getBoard_id() {
@@ -71,19 +75,19 @@ public class Article {
         this.content = content;
     }
 
-    public LocalDateTime getCreate_date() {
+    public LocalDateTime getCreated_date() {
         return created_date;
     }
 
-    public void setCreate_date(LocalDateTime create_date) {
-        this.created_date = create_date;
+    public void setCreated_date(LocalDateTime created_date) {
+        this.created_date = created_date;
     }
 
-    public LocalDateTime getUpdate_date() {
+    public LocalDateTime getModified_date() {
         return modified_date;
     }
 
-    public void setUpdate_date(LocalDateTime update_date) {
-        this.modified_date = update_date;
+    public void setModified_date(LocalDateTime modified_date) {
+        this.modified_date = modified_date;
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public class MemberDAO {
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public MemberDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -22,12 +22,12 @@ public class MemberDAO {
     );
 
     public List<Member> getAll() {
-        String sql = "select * from member";
+        String sql = "select * from members";
         return jdbcTemplate.query(sql,memberRowMapper);
     }
 
     public Member getById(Long id) {
-        String sql = "select * from member where id = ?";
+        String sql = "select * from members  where id = ?";
         return jdbcTemplate.queryForObject(sql,memberRowMapper,id);
     }
 }

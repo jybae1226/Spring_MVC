@@ -7,14 +7,15 @@ import com.example.demo.ETC.Model.Article;
 
 public record ArticleResponse(
     Long id,
+    Long board_id,
+    Long author_id,
     String title,
     String content,
-    String board,
-    String member,
-    LocalDateTime time
+    LocalDateTime created_date,
+    LocalDateTime modified_date
 ) {
     public static ArticleResponse of(Article article, Board board, Member member) {
 
-        return new ArticleResponse(article.getId(), article.getTitle(), article.getContent(), board.getName(), member.getName(), LocalDateTime.now());
+        return new ArticleResponse(article.getId(), article.getauthor_id(), article.getBoard_id(),article.getTitle(), article.getContent(), LocalDateTime.now(), LocalDateTime.now());
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.DAO;
 
 import com.example.demo.ETC.Model.Board;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Repository
 public class BoardDAO {
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public BoardDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -27,6 +28,10 @@ public class BoardDAO {
 
     public Board getById(Long id) {
         String sql = "select * from board where id = ?";
-        return jdbcTemplate.queryForObject(sql,boardRowMapper,id);
+        try {
+            return jdbcTemplate.queryForObject(sql,boardRowMapper,id);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 }
