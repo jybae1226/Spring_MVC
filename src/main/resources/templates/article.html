@@ -8,7 +8,7 @@
     <div th:each="article:${articles}">
         <div>
             <hr style="border: solid 2px;width:50%;margin-left:0;">
-            <p>회원ID: <span th:text="${article.user_id}"></span></p>
+            <p>회원이름: <span th:text="${user_name}"></span></p>
             <p>글 제목:<span th:text="${article.title}"></span></p>
             <p>등록날짜:<span th:text="${article.create_date}"></span></p>
             <p>수정날짜:<span th:text="${article.update_date}"></span></p>

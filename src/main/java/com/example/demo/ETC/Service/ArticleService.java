@@ -14,16 +14,15 @@ import java.time.LocalDateTime;
 @Service
 @Transactional
 public class ArticleService {
-    private ArticleDAO articleDAO;
-    private BoardDAO boardDAO;
-    private MemberDAO memberDAO;
+    private final ArticleDAO articleDAO;
+    private final BoardDAO boardDAO;
+    private final MemberDAO memberDAO;
 
-    private ArticleService(ArticleDAO articleDAO, BoardDAO boardDAO, MemberDAO memberDAO) {
+    public ArticleService(ArticleDAO articleDAO, BoardDAO boardDAO, MemberDAO memberDAO) {
         this.articleDAO = articleDAO;
         this.boardDAO = boardDAO;
         this.memberDAO = memberDAO;
     }
-
 
     public List<ArticleResponse> getallArticle() {
         List<Article> articles = articleDAO.getAll();
@@ -122,5 +121,13 @@ public class ArticleService {
             throw new IllegalArgumentException("Board not found");
         }
         return board;
+    }
+
+    public Member getMemberById(Long id){
+        Member member=memberDAO.getById(id);
+        if (member==null) {
+            throw new IllegalArgumentException("Member not found");
+        }
+        return member;
     }
 }

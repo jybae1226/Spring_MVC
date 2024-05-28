@@ -22,19 +22,24 @@ public class EveryController {
     }
 
     @GetMapping("/posts")
-    public String posts(@RequestParam(name="board_id",required = false) Long board_id, Model model) {
+    public String posts(@RequestParam(name="board_id") Long board_id, Model model) {
         List<ArticleResponse> articles=articleService.getArticleByBoardId(board_id);
         Board board=articleService.getBoardById(board_id);
         model.addAttribute("articles",articles);
         model.addAttribute("board_name",board.getName());
+
+        for(ArticleResponse article : articles) {
+            Member member=articleService.getMemberById(article.id());
+            model.addAttribute("user_name",member.getName());
+        }
         return "article";
     }
 
     @GetMapping("/articles")
-    public ResponseEntity<List<ArticleResponse>> getArticleByBoradId(@RequestParam(name="board_id",required = false) Long BoardId) {
+    public ResponseEntity<List<ArticleResponse>> getArticleByBoradId(@RequestParam(name="board_id") Long board_id) {
         List<ArticleResponse> articles;
-        if (BoardId != null) {
-            articles=articleService.getArticleByBoardId(BoardId);
+        if (board_id != null) {
+            articles=articleService.getArticleByBoardId(board_id);
         }
         else
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -30,11 +30,11 @@ public class ArticleDAO {
 
     public Article create(Article article) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        String sql="INSERT INTO article (user_id, board_id, title, content) VALUES (?, ?, ?, ?)";
+        String sql="INSERT INTO article (board_id, user_id, title, content) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(connection->{
             PreparedStatement ps=connection.prepareStatement(sql,new String[]{"id"});
-                ps.setLong(1, article.getUser_id());
-                ps.setLong(2, article.getBoard_id());
+                ps.setLong(1, article.getBoard_id());
+                ps.setLong(2, article.getUser_id());
                 ps.setString(3, article.getTitle());
                 ps.setString(4, article.getContent());
                 return ps; }
@@ -53,9 +53,9 @@ public class ArticleDAO {
         return jdbcTemplate.queryForObject(sql,ArticleRowMapper,id);
     }
 
-    public List<Article> getByboardId(Long boardId) {
+    public List<Article> getByboardId(Long board_id) {
         String sql = "select * from article where board_id = ?";
-        return jdbcTemplate.query(sql,ArticleRowMapper,boardId);
+        return jdbcTemplate.query(sql,ArticleRowMapper,board_id);
     }
 
     public Article update(Long board_id, Article article) {
